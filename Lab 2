@@ -1,0 +1,31 @@
+delta
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a,b,c,x,y,delta;
+    scanf("%d%d%d",&a,&b,&c);
+   printf("Zdefiniowales rownanie kwadratowe %dx^2+%db+%d=0",a,b,c);
+   delta=(b*b)-4*a*c;
+   if(delta>0)
+   {
+    float x1,x2;
+   float pierwiastek;
+   pierwiastek=sqrt(delta);
+   x1=(-b-pierwiastek)/(2*a);
+   x2=(-b+pierwiastek)/(2*a);
+   printf("Delta %d, x1=%f, x2=%f",delta,x1,x2);
+   }
+   if(delta==0)
+   {
+       float x;
+       x=-b/(2*a);
+       printf("Delta %d, x=%f",delta,x);
+   }
+   if(delta<0)
+   {
+       printf("Delta %d, brak rozwiazan rzeczywistych", delta);
+   }
+    return 0;
+}
