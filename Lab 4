@@ -17,3 +17,21 @@ int main()
     zsumuj(2);
     zsumuj(1);
 }
+
+#include<stdio.h>
+
+int silnia (int n)
+{
+    static int suma=0;
+   if(n==0)
+   {
+       return 1;
+   }
+   return n*silnia(n-1);
+}
+
+int main()
+{
+   printf("%d\n",silnia(6));
+   printf("%d\n",silnia(0));
+}
