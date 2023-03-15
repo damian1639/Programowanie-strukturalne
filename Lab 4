@@ -35,3 +35,23 @@ int main()
    printf("%d\n",silnia(6));
    printf("%d\n",silnia(0));
 }
+
+#include<stdio.h>
+
+int ciag (int liczba)
+{
+   if(liczba==0)
+   {
+       return 1;
+   }
+   return 2*ciag(liczba-1)+5;
+}
+
+int main()
+{
+  for(int i=0;i<10;i++)
+  {
+      printf("a_%d= %d \n",i,ciag(i));
+  }
+  return 0;
+}
