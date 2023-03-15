@@ -1,0 +1,19 @@
+#include<stdio.h>
+
+int zsumuj(int x)
+{
+    static int suma=0;
+    suma=suma+x;
+    printf("te funkcje wywolano %d razy\n",suma);
+    return x;
+
+}
+
+int main()
+{
+    zsumuj(5);
+    zsumuj(3);
+    zsumuj(8);
+    zsumuj(2);
+    zsumuj(1);
+}
