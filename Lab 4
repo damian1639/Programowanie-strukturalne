@@ -55,3 +55,24 @@ int main()
   }
   return 0;
 }
+
+#include<stdio.h>
+
+int wyraz (int liczba)
+{
+   if(liczba==0||liczba==1)
+   {
+       return 1;
+   }
+   return wyraz(liczba-1)+2*wyraz(liczba-2)+3;
+}
+
+int main()
+{
+  for(int i=0;i<10;i++)
+  {
+      printf("%d, ",wyraz(i));
+  }
+  return 0;
+}
+
