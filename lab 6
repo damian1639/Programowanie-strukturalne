@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+void wypisz(unsigned int n,int * tab)
+{
+    int i;
+    for(i=0;i<n;i++){
+    printf("%d\t",tab[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    printf("\n\n cw 4 2 0\n\n");
+    int rozmiar=4;
+    int tab[rozmiar];
+    tab[0]=6; tab[1]=2; tab[2]=5; tab[3]=8;
+    wypisz(rozmiar,tab);
+    printf("%d\n",*tab);
+    int tab2[]={9,5,7,3};
+    wypisz(rozmiar,tab2);
+    return 0;
+}
