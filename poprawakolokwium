@@ -1,0 +1,95 @@
+void odwroc(int tab[], int n) 
+{
+    for (int i = 0; i < n/2; i++) 
+    {
+        int temp = tab[i];
+        tab[i] = tab[n-1-i];
+        tab[n-1-i] = temp;
+    }
+}
+
+void zamiana(unsigned int n,unsigned int tab[])
+{
+    int ileelemenotwa=0;
+    for(int c=0;c<n;c++)
+        {
+        if(tab[c]%2==0){
+            ileelemenotwa++;
+        }
+    }
+    int wynik[ileelemenotwa];
+    int licznik = 0;
+    for (int i = 0; i < n; i++) 
+        {
+        if(tab[i]%2==0){
+        wynik[licznik]=tab[i];
+        licznik++;
+        }
+    }
+    
+      int odwrocone[ileelemenotwa];
+    odwroc(wynik,ileelemenotwa);
+    int licznik2=0;
+    int koniec[n];
+    for(int j=0;j<n;j++){
+        if(tab[j]%2==0){
+            tab[j]=wynik[licznik2];
+            licznik2++;
+        }
+    }
+    
+        int maksdzielnik=0;
+    int szukanaliczba;
+    for(int i=100;i<1000;i++){
+        int dzielniki=0;
+        for(int j=1;j<=i;j++){
+            if(i%j==0){
+                dzielniki++;
+            }
+        }
+        if(dzielniki>maksdzielnik){
+            maksdzielnik=dzielniki;
+            szukanaliczba=i;
+        }
+    }
+    
+    void unikalne(int n, int tab[]) {
+    int wynik[n];
+    int licznik = 0;
+    for (int i = 0; i < n; i++) {
+        int j;
+        for (j = 0; j < licznik; j++) {
+            if (tab[i] == wynik[j]) {
+                break;
+            }
+        }
+        if (j == licznik) {
+            wynik[licznik] = tab[i];
+            licznik++;
+        }
+    }
+    for (int i = 0; i < licznik; i++) {
+        printf("%d ", wynik[i]);
+    }
+}
+
+double *srednia(unsigned int num, unsigned int *ptr) {
+    double *result = (double*)malloc(sizeof(double));
+    *result = (num + *ptr) / 2.0;
+    return result;
+    
+cyfra wybrana od prawej strony noway
+   
+int cyfrawybrana(int n, int k) {
+    int cyfra = 0, licznik = 0;
+    while (n > 0) {
+        cyfra = n % 10;
+        n /= 10;
+        licznik++;
+        if (licznik == k) {
+            return cyfra;
+        }
+    }
+    return 0;
+    
+    
