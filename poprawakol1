@@ -1,0 +1,194 @@
+#include <stdio.h>
+#include <stdlib.h>
+//zad3
+int cyfrawybrana(int n, int k) {
+    if (n == 0) {
+        return 0;
+    }
+    int liczba_cyfr = 0;
+    int temp = n;
+    while (temp != 0) {
+        liczba_cyfr++;
+        temp /= 10;
+    }
+    if (liczba_cyfr < k) {
+        return 0;
+    }
+    int cyfra;
+    temp = n;
+    while (liczba_cyfr > k) {
+        temp /= 10;
+        liczba_cyfr--;
+    }
+    cyfra = temp % 10;
+    return cyfra;
+}
+/// cyfra wybrana od prawej strony noway
+/*
+int cyfrawybrana(int n, int k) {
+    int cyfra = 0, licznik = 0;
+    while (n > 0) {
+        cyfra = n % 10;
+        n /= 10;
+        licznik++;
+        if (licznik == k) {
+            return cyfra;
+        }
+    }
+    return 0;
+}
+*/
+//zad 4 nie dziala zbyt g
+int ciag(int x,int n,int i){
+if(n==0){
+    return x;
+}
+if(i%5==0){
+    return ciag(x*5,n-1,i/5);
+}
+else{
+    return ciag(x+12,n-1,i*2);
+}
+}
+//zad 5
+int podwojny_wskaznik(int *n){
+    int wynik= *n *2;
+    return wynik;
+}
+double *srednia(unsigned int num, unsigned int *ptr) {
+    double *result = (double*)malloc(sizeof(double));
+    *result = (num + *ptr) / 2.0;
+    return result;
+}
+//zad 6
+void printDistinct(int n, int tab[]) {
+    int wynik[n];
+    int licznik = 0;
+    for (int i = 0; i < n; i++) {
+        int j;
+        for (j = 0; j < licznik; j++) {
+            if (tab[i] == wynik[j]) {
+                break;
+            }
+        }
+        if (j == licznik) {
+            wynik[licznik] = tab[i];
+            licznik++;
+        }
+    }
+    for (int i = 0; i < licznik; i++) {
+        printf("%d ", wynik[i]);
+    }
+}
+//zad 7
+void odwroc(int tab[], int n) {
+    for (int i = 0; i < n/2; i++) {
+        int temp = tab[i];
+        tab[i] = tab[n-1-i];
+        tab[n-1-i] = temp;
+    }
+}
+void zamiana(unsigned int n,unsigned int tab[]){
+    int ileelemenotwa=0;
+    for(int c=0;c<n;c++){
+        if(tab[c]%2==0){
+            ileelemenotwa++;
+        }
+    }
+    int wynik[ileelemenotwa];
+    int licznik = 0;
+    for (int i = 0; i < n; i++) {
+        if(tab[i]%2==0){
+        wynik[licznik]=tab[i];
+        licznik++;
+        }
+    }
+    int odwrocone[ileelemenotwa];
+    odwroc(wynik,ileelemenotwa);
+    int licznik2=0;
+    int koniec[n];
+    for(int j=0;j<n;j++){
+        if(tab[j]%2==0){
+            tab[j]=wynik[licznik2];
+            licznik2++;
+        }
+    }
+    for (int y = 0; y < n; y++) {
+        printf("%u ", tab[y]);
+    }
+}
+int main()
+{
+    //zad 1
+    int x,y,z,w;
+    printf("Podaj cztery liczby\n");
+    scanf("%d %d %d %d", &x, &y, &z, &w);
+    if (x == y && y == z && z == w) {
+        printf("kareta\n");
+    }
+    else if ((x == y && z == w) || (x == z && y == w) || (x == w && y == z)) {
+        printf("dwie pary\n");
+    }
+    else if ((x == y && z != w && y!=z && y!=w) || (x == z && y != w && x!=y & x!=w) || (x == w && y != z && x!=z && x!=y) || (y == z && x != w && y!=w && y!=x) || (y == w && x != z && y!=x && y!=z) || (z == w && x != y && z!=x && z!=y)) {
+        printf("para\n");
+    }
+    else if ((x == y && y == z && z != w) || (x == y && y == w && z != w) || (x == z && z == w && y != x) || (y == z && z == w && x != w)) {
+        printf("trojka\n");
+    }
+    else {
+        printf("nic\n");
+    }
+    // zad 2
+    int maksdzielnik=0;
+    int szukanaliczba;
+    for(int i=100;i<1000;i++){
+        int dzielniki=0;
+        for(int j=1;j<=i;j++){
+            if(i%j==0){
+                dzielniki++;
+            }
+        }
+        if(dzielniki>maksdzielnik){
+            maksdzielnik=dzielniki;
+            szukanaliczba=i;
+        }
+    }
+    printf("Liczba %d ma %d dzielniki\n",szukanaliczba,maksdzielnik);
+    printf("Oto dzielniki liczby %d: \n",szukanaliczba);
+    for(int i=1;i<=szukanaliczba;i++){
+        if(szukanaliczba%i==0){
+            printf("%d. ",i);
+        }
+    }
+    printf("\n");
+    // zad 3
+    printf("%d\n",cyfrawybrana(5824,3));
+    //zad 4
+    printf("%d\n",ciag(1,5,1));
+    // zad 5
+    int num=5;
+    int *n=&num;
+    printf("a) wskaznik podwojonej liczby %d wynosi %d\n",*n,podwojny_wskaznik(n));
+    unsigned int num1 = 10;
+    unsigned int num2 = 20;
+    unsigned int *num2_ptr = &num2;
+    double *avg_ptr = srednia(num1, num2_ptr);
+    printf("b) srednia arytmetyczna liczby %u i liczby %u to %.2f\n", num1, *num2_ptr, *avg_ptr);
+    free(avg_ptr);
+    // zad 6
+    int tab6[] = {7,4,6,7,5,5,8,6,7};
+    int n1 = sizeof(tab6) / sizeof(tab6[0]);
+    printDistinct(n1, tab6);
+    printf("\n");
+    //zad 7
+    unsigned int tab[] = {4, 8, 1, 6, 3, 2, 9, 5,5};
+    unsigned int m = sizeof(tab) / sizeof(tab[0]);
+
+    printf("Przed modyfikacja: ");
+    for (int i = 0; i < m; i++) {
+        printf("%u ", tab[i]);
+    }
+    printf("\n");
+    zamiana(m,tab);
+    return 0;
+}
