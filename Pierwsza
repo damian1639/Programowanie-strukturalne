@@ -1,3 +1,20 @@
+#include <math.h>
+#include <stdbool.h>
+
+printf("tekst i typ",parametr)
+scanf("tekst i typ",parametr)
+typy:
+%d - int
+%f - float
+%s - string
+%lf - double 
+%b - bool
+%u - unsigned int
+//W S K A Ź N I K I
+%p - wskazniki
+w fukncji (*x)
+w print("%p ",&x)
+
 1. Odwracanie ciagu liczb
 
 void odwroc(int tab[], int n) 
@@ -30,4 +47,46 @@ int main()
     return 0;
 }
 
-2.
+2.Unikalne
+
+void unikalne(int n, int tab[]) {
+    int wynik[n];
+    int licznik = 0;
+    for (int i = 0; i < n; i++) {
+        int j;
+        for (j = 0; j < licznik; j++) {
+            if (tab[i] == wynik[j]) {
+                break;
+            }
+        }
+        if (j == licznik) {
+            wynik[licznik] = tab[i];
+            licznik++;
+        }
+    }
+    for (int i = 0; i < licznik; i++) {
+        printf("%d ", wynik[i]);
+    }
+}
+
+3. Liczba pierwsza
+
+int main()
+
+{
+     int p, i;
+     printf("Podaj liczbe: ");
+     scanf("%d", &p);
+     for(i = 2; i < p; i++) 
+     {
+          if(p % i == 0)
+          {
+               printf("%d  nie jest liczba pierwsza.\n", p);
+               system("PAUSE");
+               return 1;
+          }
+     }
+     printf("%d jest liczba pierwsza.\n", p);
+     system("PAUSE");
+     return 0;
+}
