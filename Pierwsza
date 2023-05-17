@@ -1,47 +1,33 @@
-#include <stdio.h>
+1. Odwracanie ciagu liczb
 
-#include <stdlib.h>
-
-
+void odwroc(int tab[], int n) 
+{
+    for (int i = 0; i < n/2; i++) 
+    {
+        int temp = tab[i];
+        tab[i] = tab[n-1-i];
+        tab[n-1-i] = temp;
+    }
+}
 
 int main()
-
 {
-
-     int p, i;
-
-     
-
-     printf("Podaj liczbe: ");
-
-     scanf("%d", &p);
-
-     
-
-     for(i = 2; i < p; i++) 
-
-     {
-
-          if(p % i == 0)
-
-          {
-
-               printf("%d  nie jest liczba pierwsza.\n", p);
-
-               system("PAUSE");
-
-               return 1;
-
-          }
-
-     }
-
-     
-
-     printf("%d jest liczba pierwsza.\n", p);
-
-     system("PAUSE");
-
-     return 0;
-
+    
+    unsigned int tab[] = {4, 8, 1, 6, 3, 2, 9, 5,5};
+    unsigned int m = sizeof(tab) / sizeof(tab[0]);
+     printf("Przed modyfikacja: ");
+    for (int i = 0; i < m; i++) {
+        printf("%u ", tab[i]);
+    }
+    printf("\n");
+    odwroc(tab, m);
+    printf("Po modyfikacja: ");
+    for (int i = 0; i < m; i++) {
+        printf("%u ", tab[i]);
+    }
+    printf("\n");
+    
+    return 0;
 }
+
+2.
