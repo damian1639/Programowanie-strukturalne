@@ -76,8 +76,14 @@ zeby a mialo wartosc 6: a=6(musza byc sklejone)
 wyswietlenie zawartosci: echo $a
 obczlicanie a+b i zapisanie w c: c=$[$a+$b]
 echo $c
+porownywanie:
+ala = ala
+2 -eq 2 <
+2 -lt 2 <=
+2 -ne 2 !=
+2 -gt 2 >
+2 -ge 2 >=
 10. Warunki if
-nie ma
-
+bedzie 1 porste zadanie
 
 
