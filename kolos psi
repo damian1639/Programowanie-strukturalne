@@ -54,6 +54,30 @@ wiecej niz 5 minut: amin +5
 ctime 5 (*24)
 Nazwa od literki n, tylko foldery, dostep do nich mniej niz 5 minut temu:
 find -type f -name 'n*' -amin -5
+wiecej niz 5 minut temu:
+find -type f -name 'n*' -amin +5
+Wszystkie pliki:
+find -name 'n*' -amin +5
+Ktore zaczynaja sie na duza literke:
+-iname  - ignoruje wielkosc liter
+Znajdowanie konkretnych uprawnien:
+find -perm 777(wszystkie uprawnienia)
+grep czegoszukamy *.txt
+tam gdzie mamy na poczatku
+grep 'czegoszukamy' *.txt
+z cyfra na poczatku/nakoncu:
+grep '[0-9]$' *.txt
+przekierwoniae zeby byla lista 
+grep '[0-9]$' *.txt | less
+spacja przed: grep '^\s ala' *.txtalbokatalog
+jezeli dwa slowa: grep -E '^\s*(ala|alla)' *.txtalbokatalog
+9. Zmienne:
+zeby a mialo wartosc 6: a=6(musza byc sklejone)
+wyswietlenie zawartosci: echo $a
+obczlicanie a+b i zapisanie w c: c=$[$a+$b]
+echo $c
+10. Warunki if
+nie ma
 
 
 
