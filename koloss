@@ -79,6 +79,99 @@ find /dev -type c | wc -l
 c)  wyszukać wszystkie podkatalogi w katalogu domowym z prawami dostępu r-x dla 
 właściciela;
 find ~ -type d -perm -u=rx
+u-wlasciciel, g-grupa, o-inni
+
+amin- do ktoryvh byl dostep
+cmin- ktore byly zmieniane
+mmin- ktore byly modyfikowane
+
+typy: f -zwykły, d-katalog, l- dowiązanie symboliczne, b - urz. blokowe, c- urz. znakowe, s - socket
+(gniazdo), p - pipe
+
+d) policz, ile urządzeń blokowych jest zdefiniowanych w katalogu /dev;
+find /dev -type b | wc -l
+e)policz, ile wierszy razem zawierają pliki o nazwach zaczynających się na jedną z liter a,
+c-e, w
+find ~ -name '[a,c-e,w]*' | wc -l
+f)wyszukaj nazwy wszystkich podkatalogów od poziomu 2 do 3 w katalogu głównym i
+policz, ile ich jest.
+find ~ -mindepth 2 -maxdepth 3 -type d | wc -l
+
+Żeby dokonać operacji na wyszukanych plikach trzeba użyć:
+-exec <polecenie np.cat> {} \; 
+
+Wyszukać w bieżącym katalogu w plikach wiersze zawierające pola:
+a. „ala” - na początku wiersza
+grep '^ala' tekst21_03.txt
+b. „tola i ala” – na końcu wiersza
+grep 'tola i ala$' tekst21_03.txt
+c. typu „ala” (może być „ala”, „aallaa”, „allo”, „alo”)
+grep 'ala' tekst21_03.txt
+d. typu „<znak>l<znak>” lub „<znak>ll<znak>” lub „<znak>lll<znak>”
+grep '.l.' tekst21_03.txt
+grep '..l.' *
+grep '...l.' *
+e. ile wierszy zaczyna się od „ala” lub „alla” (mogą być wcześniej spacje)
+grep -c '^\s*[alla|ala]' tekst21_03.txt
+f. wiersze z przecinkiem po literze „o”
+grep 'o, ' tekst21_03.txt
+g. wiersze ze znakiem ”\”
+grep '\\' tekst21_03.txt
+h. wiersze zawierające „4” i nie zawierające po 4 znaku „*”
+grep '4' tekst21_03.txt | grep -v '.\{4\}\*'
+
+Utworzyć zmienne powłoki: nn1 z wartością 10, nn2 równe 5, dodaj nn1 do nn2, wynik zapisz do nn1,
+zmienną nn2 usuń.
+nn1=$[$nn1+$nn2]
+unset nn2
+
+#!/bin/bash
+
+# Zapamiętanie obecnej wartości zmiennej PS1
+old_PS1=$PS1
+
+# Pobranie nazwy powłoki
+shell_name=$(basename $SHELL)
+
+# Dodanie "xd" i nazwy powłoki do znaku zachęty
+PS1="xd $old_PS1($shell_name) "
+
+# Ewentualne zapisanie zmian do pliku .bashrc dla zachowania zmian po ponownym zalogowaniu
+
+# Komunikat informujący o zmianie znaku zachęty
+echo "Zaktualizowano znak zachęty. Zmiana będzie obowiązywać po ponownym zalogowaniu."
+
+1. Utwórz dwie zmienne i przypisz do nich liczby, sprawdzić która z nich jest mniejsza.
+if[$a -gt $b]
+then echo "a jest wieksze od b"
+else echo "b jest wieksze od a"
+fi
+2. Sprawdź czy w katalogu domowym jest plik zwykły „dane.txt”.
+cd ~
+if[-f dane.txt]
+then eho "istnieje"
+else echo "nie istnieje"
+fi
+3. Utwórz zmienną, sprawdź, czy zmienna zawiera łańcuch niezerowy.
+if[-n $a]
+then echo "niezerowy"
+else echo "zerowy"
+fi
+4. Sprawdź czy bieżącym katalogiem jest katalog domowy.
+if["$PWD = $HOME]
+then echo "katalog domowy"
+else echo "inny katalog"
+fi
+
+porownywanie:
+ala = ala
+2 -eq 2 =
+2 -le 2 <
+2 -lt 2 <=
+2 -ne 2 !=
+2 -gt 2 >
+2 -ge 2 >=
+
 
 
 
