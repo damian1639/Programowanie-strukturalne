@@ -1,0 +1,89 @@
+1.
+1.   Utwórz poniższą strukturę katalogów:
+mkdir st_2024 
+cd st_2024 
+2. Utwórz plik Zestawienie.txt w katalogu Teksty, wpisz swój nr albumu
+nano Zestawienie.txt
+a)Skopiuj go do podkatalogu Skrypty i nadaj mu nową nazwę spis24.txt.
+cp Zestawienie.txt ~/st_2024/Programy/Shell/Skrypty/spis24.txt 
+b)Wyświetl zawartość pliku spis24.txt
+less spis24.txt
+3. Wypisz nazwę bieżącego katalogu.
+pwd
+4. Utworzyć dowiązanie symboliczne z katalogu Podania do katalogu Dane z
+nazwą Odsylacz_Dane.
+ln -s ~/st_2024/Dane Odsylacz_Dane
+5. Utwórz dowiązanie symboliczne z katalogu Podania do katalogu Skrypty z nazwą
+Skrypty_Odsylacz.
+ln -s ~/st_2024/Programy/Shell/Skrypty Skrypty_Odsylacz
+6. Utwórz dowiązanie symboliczne z katalogu Listy do pliku Zestawienie.txt z
+nazwą DoZestawienia.
+ln -s ~/st_2024/Teksty/Zestawienie.txt DoZestawienia
+7.  Utwórz w folderze Listy następujące pliki: ListDoEwy.txt, OlaChceKota.txt,
+WielkieOczy.txt, ToNieJestList, list.txt.
+touch ListDoEwy.txt
+8.  Przenieś wszystkie pliki tekstowe do folderu Listy do folderu Podania.
+mv -t ~/st_2024/Teksty/Podania ListDoEwy.txt OlaChceKota.txt WielkieOczy.txt ToNieJestList list.txt
+9.Usuń podkatalog Programy wraz z podkatalogami.
+rm -r Programy/
+10.Skopiuj wszystkie pliki, które zawierają w nazwie słowo “list” do Folderu Listy.
+cp *list* ~/st_2024/Teksty/Listy/
+11. Usuń wszystkie pliki tekstowe, których nazwa ma dokładnie 4 znaki.
+rm ????.txt
+
+2. 
+wyswietlenie praw dostepu: ls -l
+r- read - odczyt
+w- write - zapis
+x- execute - wykonanie
+
+3. Zmień prawa dostępu:
+a) do katalogu Notatki - na - właściciel: rwx, grupa i reszta: r
+chmod 744 Notatki/
+b) do katalogu Kopie na: właściciel: rwx, grupa: rw-, reszta: r--.
+chmod 764 Kopie/
+c) do pliku Zapiski.txt (w katalogu Notatki) na: właściciel - wszystko, grupa -
+odczyt, reszta - wykonaj
+chmod 741 Zapiski.txt
+ls -i sprawdzanie i-wezlow
+
+3.
+Liczenie:
+tylko wiersze: wc –l,
+tylko wyrazy: wc –w,
+tylko znaki: wc –c.
+
+przekierowanie ">" powoduje stworzenie nowej zawartości pliku.
+przekierowanie ">>" powoduje dopisanie (na końcu) do istniejącej treści.
+
+a) do pliku drzewo zapisać strukturę katalogu domowego, następnie pliki dane 22 i drzewo 
+zapisać do pliku wynik
+tree ~ > drzewo
+cat dane22 drzewo > wynik
+
+cat dane22 drzewo wynik > calosc - mechanizm WE
+
+b)  policz ilu użytkowników pracuje teraz na serwerze;
+who | wc -l
+
+c) policz, ile plików i podkatalogów jest w danym katalogu.
+ls -l | grep "^-" | wc -l - ile plikow
+ls -l | grep "^d" | wc -l - ile katalogow
+
+FIND
+a)wszystkie puste pliki zwykłe w katalogu domowym i jego podkatalogach do poziomu 1
+find ~ -maxdepth 1 -empty
+b) znaleźć w katalogu /dev wszystkie pliki opisujące pseudourządzenia znakowe, policzyć –
+ile ich jest
+find /dev -type c | wc -l
+c)  wyszukać wszystkie podkatalogi w katalogu domowym z prawami dostępu r-x dla 
+właściciela;
+find ~ -type d -perm -u=rx
+
+
+
+
+
+
+
+
