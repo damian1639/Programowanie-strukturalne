@@ -1,7 +1,4 @@
 1.
-1.   Utwórz poniższą strukturę katalogów:
-mkdir st_2024 
-cd st_2024 
 2. Utwórz plik Zestawienie.txt w katalogu Teksty, wpisz swój nr albumu
 nano Zestawienie.txt
 a)Skopiuj go do podkatalogu Skrypty i nadaj mu nową nazwę spis24.txt.
@@ -13,17 +10,10 @@ pwd
 4. Utworzyć dowiązanie symboliczne z katalogu Podania do katalogu Dane z
 nazwą Odsylacz_Dane.
 ln -s ~/st_2024/Dane Odsylacz_Dane
-5. Utwórz dowiązanie symboliczne z katalogu Podania do katalogu Skrypty z nazwą
-Skrypty_Odsylacz.
-ln -s ~/st_2024/Programy/Shell/Skrypty Skrypty_Odsylacz
-6. Utwórz dowiązanie symboliczne z katalogu Listy do pliku Zestawienie.txt z
-nazwą DoZestawienia.
-ln -s ~/st_2024/Teksty/Zestawienie.txt DoZestawienia
-7.  Utwórz w folderze Listy następujące pliki: ListDoEwy.txt, OlaChceKota.txt,
-WielkieOczy.txt, ToNieJestList, list.txt.
+7.  Utwórz pliki: ListDoEwy.txt
 touch ListDoEwy.txt
 8.  Przenieś wszystkie pliki tekstowe do folderu Listy do folderu Podania.
-mv -t ~/st_2024/Teksty/Podania ListDoEwy.txt OlaChceKota.txt WielkieOczy.txt ToNieJestList list.txt
+mv -t ~/st_2024/Teksty/Podania ListDoEwy.txt OlaChceKota.txt 
 9.Usuń podkatalog Programy wraz z podkatalogami.
 rm -r Programy/
 10.Skopiuj wszystkie pliki, które zawierają w nazwie słowo “list” do Folderu Listy.
